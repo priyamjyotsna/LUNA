@@ -39,10 +39,9 @@ Luna is an open-source menstrual cycle web app: period logging, phase-aware pred
 ## Repository layout
 
 ```
-LUNA/
-├── luna-app/          # Next.js application (install & run here)
-└── LUNA/
-    └── LUNA_SPEC.md   # Full product & build specification
+.
+├── README.md
+└── luna-app/          # Next.js application (install & run here)
 ```
 
 ---
@@ -87,9 +86,9 @@ Luna is a standard Next.js app: deploy to **[Vercel](https://vercel.com)**, **[R
 
 ---
 
-## Spec & roadmap
+## Roadmap
 
-Product behavior, phases, and algorithms are documented in **`LUNA/LUNA_SPEC.md`**. That file is the source of truth for features and intent; the app is implemented to match it over time.
+Feature direction and prioritization are tracked through **GitHub Issues** and pull requests. Contributors should align changes with the existing UX patterns and in-app copy (including medical disclaimers).
 
 ---
 

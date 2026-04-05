@@ -1,2 +1,5 @@
 .DS_Store
 *.log
+
+# Internal product / scope document — not part of the public repository
+LUNA/

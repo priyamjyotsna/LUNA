@@ -49,7 +49,7 @@
 }
 
 :root {
-  /* Luna palette (LUNA_SPEC — UI Design System) */
+  /* Luna palette (UI design tokens) */
   --rose: #c97b7b;
   --rose-light: #f0d5d5;
   --rose-pale: #fdf5f5;
