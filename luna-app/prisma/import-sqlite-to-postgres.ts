@@ -54,7 +54,7 @@ async function main() {
   const pgUrl = process.env.DATABASE_URL ?? "";
   if (!pgUrl.startsWith("postgres")) {
     console.error(
-      "Set DATABASE_URL or LUNA_DATABASE_URL to a PostgreSQL connection string in .env.local.",
+      "Set DATABASE_URL to a PostgreSQL connection string in .env.local (or rely on POSTGRES_PRISMA_URL from Neon).",
     );
     process.exit(1);
   }

@@ -17,12 +17,9 @@ if (fs.existsSync(envFile)) {
   dotenv.config({ path: envFile });
 }
 
-/* Prisma schema uses DATABASE_URL. Team-prefixed LUNA_DATABASE_URL is supported. */
 if (!process.env.DATABASE_URL?.startsWith("postgres")) {
   const u =
-    process.env.LUNA_DATABASE_URL ??
-    process.env.POSTGRES_PRISMA_URL ??
-    process.env.POSTGRES_URL;
+    process.env.POSTGRES_PRISMA_URL ?? process.env.POSTGRES_URL;
   if (u?.startsWith("postgres")) {
     process.env.DATABASE_URL = u;
   }

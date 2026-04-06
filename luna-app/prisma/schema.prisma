@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  /// Neon + Vercel integrations set DATABASE_URL. Use LUNA_DATABASE_URL locally if you prefer; see prisma-env.
+  /// Set DATABASE_URL to your Neon pooled Postgres URL (Vercel + Neon integration does this automatically).
   url      = env("DATABASE_URL")
 }
 
