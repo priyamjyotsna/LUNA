@@ -1,5 +1,5 @@
 /**
- * Load `.env.local` then `.env` so Prisma CLI sees `LUNA_DATABASE_URL` locally.
+ * Load `.env.local` then `.env` so Prisma CLI sees env vars locally.
  * Does not override variables already set (e.g. Vercel-injected env).
  */
 const fs = require("fs");
@@ -17,7 +17,13 @@ if (fs.existsSync(envFile)) {
   dotenv.config({ path: envFile });
 }
 
-/* After dotenv: align with Prisma schema (LUNA_DATABASE_URL). */
-if (!process.env.LUNA_DATABASE_URL && process.env.DATABASE_URL?.startsWith("postgres")) {
-  process.env.LUNA_DATABASE_URL = process.env.DATABASE_URL;
+/* Prisma schema uses DATABASE_URL. Team-prefixed LUNA_DATABASE_URL is supported. */
+if (!process.env.DATABASE_URL?.startsWith("postgres")) {
+  const u =
+    process.env.LUNA_DATABASE_URL ??
+    process.env.POSTGRES_PRISMA_URL ??
+    process.env.POSTGRES_URL;
+  if (u?.startsWith("postgres")) {
+    process.env.DATABASE_URL = u;
+  }
 }

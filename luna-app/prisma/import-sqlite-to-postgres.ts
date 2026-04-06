@@ -1,5 +1,5 @@
 /**
- * One-off: copy data from legacy local SQLite (prisma/dev.db) into PostgreSQL (LUNA_DATABASE_URL).
+ * One-off: copy data from legacy local SQLite (prisma/dev.db) into PostgreSQL (DATABASE_URL).
  *
  * Run from `luna-app/`:
  *   npx dotenv -e .env.local -- npx tsx prisma/import-sqlite-to-postgres.ts
@@ -12,6 +12,7 @@
 import Database from "better-sqlite3";
 import { PrismaClient } from "@prisma/client";
 import path from "node:path";
+import { ensurePrismaDatabaseUrl } from "@/lib/prisma-env";
 
 const sqlitePath =
   process.env.SQLITE_PATH ?? path.join(process.cwd(), "prisma", "dev.db");
@@ -48,20 +49,17 @@ function parseIntOrNull(v: unknown): number | null {
   return Number.isFinite(n) ? Math.trunc(n) : null;
 }
 
-const prisma = new PrismaClient();
-
 async function main() {
-  if (!process.env.LUNA_DATABASE_URL && process.env.DATABASE_URL) {
-    process.env.LUNA_DATABASE_URL = process.env.DATABASE_URL;
-  }
-  const pgUrl =
-    process.env.LUNA_DATABASE_URL ?? process.env.DATABASE_URL ?? "";
+  ensurePrismaDatabaseUrl();
+  const pgUrl = process.env.DATABASE_URL ?? "";
   if (!pgUrl.startsWith("postgres")) {
     console.error(
-      "Set LUNA_DATABASE_URL (or legacy DATABASE_URL) to a PostgreSQL connection string in .env.local.",
+      "Set DATABASE_URL or LUNA_DATABASE_URL to a PostgreSQL connection string in .env.local.",
     );
     process.exit(1);
   }
+
+  const prisma = new PrismaClient();
 
   let sqlite: Database.Database;
   try {
@@ -231,13 +229,10 @@ async function main() {
 
   sqlite.close();
   console.log("Import finished.");
+  await prisma.$disconnect();
 }
 
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
-  });
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

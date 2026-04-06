@@ -4,8 +4,8 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  /// Vercel / team convention: prefixed var. For Prisma this exact name must be set (value = Neon pooled URL).
-  url      = env("LUNA_DATABASE_URL")
+  /// Neon + Vercel integrations set DATABASE_URL. Use LUNA_DATABASE_URL locally if you prefer; see prisma-env.
+  url      = env("DATABASE_URL")
 }
 
 model Account {

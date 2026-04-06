@@ -20,6 +20,6 @@ Then open [http://localhost:3000](http://localhost:3000).
 | `npm run dev` | Development server |
 | `npm run build` | Production build |
 | `npm run lint` | ESLint |
-| `npm run db:push` | Apply Prisma schema to `LUNA_DATABASE_URL` |
+| `npm run db:push` | Apply Prisma schema to `DATABASE_URL` (or `LUNA_DATABASE_URL`; see `prisma-env`) |
 | `npm run db:studio` | Prisma Studio |
 | `npm run db:seed` | Seed script (if configured) |
