@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { redirect } from "next/navigation";
-import { auth } from "@/lib/auth";
+import { auth, signOut } from "@/lib/auth";
+import { prisma } from "@/lib/db";
 import { LogPeriodFab } from "@/components/dashboard/LogPeriodButton";
 import { PeriodLogProvider } from "@/components/dashboard/period-log-context";
 import { AppSidebar } from "@/components/shared/AppSidebar";
@@ -12,8 +13,16 @@ export default async function DashboardLayout({
   children: ReactNode;
 }) {
   const session = await auth();
-  if (!session?.user) {
+  if (!session?.user?.id) {
     redirect("/login");
+  }
+
+  const dbUser = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    select: { id: true },
+  });
+  if (!dbUser) {
+    await signOut({ redirectTo: "/login?session=stale" });
   }
 
   return (

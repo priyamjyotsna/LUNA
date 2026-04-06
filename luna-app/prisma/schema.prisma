@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider = "postgresql"
+  /// Vercel / team convention: prefixed var. For Prisma this exact name must be set (value = Neon pooled URL).
+  url      = env("LUNA_DATABASE_URL")
 }
 
 model Account {

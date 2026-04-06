@@ -71,7 +71,7 @@ For seed data or imports, see scripts in `luna-app/package.json` and `luna-app/p
 
 See **`luna-app/.env.example`** for:
 
-- `DATABASE_URL` (SQLite for local dev; use PostgreSQL in production)
+- `LUNA_DATABASE_URL` (PostgreSQL / Neon pooled URL; name matches prefixed env on Vercel)
 - `NEXTAUTH_SECRET`, `NEXTAUTH_URL`
 - Optional: `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET`
 - Optional: Web Push (`NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_EMAIL`)
@@ -82,7 +82,7 @@ Never commit real secrets.
 
 ## Deployment
 
-Luna is a standard Next.js app: deploy to **[Vercel](https://vercel.com)**, **[Railway](https://railway.app)**, **[Fly.io](https://fly.io)**, or any Node host. Use a hosted **PostgreSQL** database and set production `DATABASE_URL` and auth secrets in the host’s environment.
+Luna is a standard Next.js app: deploy to **[Vercel](https://vercel.com)**, **[Railway](https://railway.app)**, **[Fly.io](https://fly.io)**, or any Node host. Use a hosted **PostgreSQL** database and set production **`LUNA_DATABASE_URL`** (and auth secrets) in the host’s environment. Prisma is wired to that variable name so it matches common `LUNA_*` Vercel env prefixes.
 
 ---
 

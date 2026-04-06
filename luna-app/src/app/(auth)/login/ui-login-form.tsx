@@ -10,9 +10,11 @@ import { Input } from "@/components/ui/input";
 export function LoginForm({
   showGoogle,
   registered,
+  sessionStale,
 }: {
   showGoogle: boolean;
   registered: boolean;
+  sessionStale?: boolean;
 }) {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -25,6 +27,12 @@ export function LoginForm({
       router.replace("/login", { scroll: false });
     }
   }, [registered, router]);
+
+  useEffect(() => {
+    if (sessionStale) {
+      toast.info("Please sign in again. Your saved session no longer matches this database.");
+    }
+  }, [sessionStale]);
 
   async function onCredentials(e: React.FormEvent) {
     e.preventDefault();
