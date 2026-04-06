@@ -2,11 +2,15 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
+    id: "/",
     name: "Luna — Cycle Tracker",
     short_name: "Luna",
     description: "Your body's rhythm, understood.",
     start_url: "/",
+    scope: "/",
     display: "standalone",
+    orientation: "natural",
+    categories: ["health", "lifestyle"],
     background_color: "#faf8f5",
     theme_color: "#c97b7b",
     icons: [

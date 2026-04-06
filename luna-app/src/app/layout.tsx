@@ -31,10 +31,13 @@ export const metadata: Metadata = {
   title: "Luna — Cycle Tracker",
   description: "Your body's rhythm, understood.",
   applicationName: "Luna",
+  icons: {
+    apple: [{ url: "/icon", type: "image/png", sizes: "192x192" }],
+  },
   appleWebApp: {
     capable: true,
     title: "Luna",
-    statusBarStyle: "default",
+    statusBarStyle: "black-translucent",
   },
   formatDetection: {
     telephone: false,
@@ -54,8 +57,11 @@ export const metadata: Metadata = {
   },
 };
 
-/** Mobile browser chrome / PWA status bar tint — spec rose for light mode */
+/** Mobile / PWA / iOS: edge-to-edge safe areas + status bar tint */
 export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#c97b7b" },
     { media: "(prefers-color-scheme: dark)", color: "#1e1429" },
@@ -73,7 +79,7 @@ export default function RootLayout({
       className={`${display.variable} ${body.variable} ${geistMono.variable} h-full`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col bg-background font-sans text-foreground antialiased">
+      <body className="flex min-h-full flex-col bg-background font-sans text-foreground antialiased [padding-top:env(safe-area-inset-top,0px)]">
         <SkipToMainLink />
         <AppProviders>{children}</AppProviders>
       </body>

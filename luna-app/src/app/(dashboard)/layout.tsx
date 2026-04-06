@@ -31,7 +31,7 @@ export default async function DashboardLayout({
         <AppSidebar className="hidden md:flex" />
         <main
           id="main-content"
-          className="flex-1 overflow-auto p-4 pb-20 md:pb-6 md:p-6"
+          className="flex-1 overflow-auto p-4 pb-[max(5.5rem,calc(4.5rem+env(safe-area-inset-bottom,0px)))] md:pb-6 md:p-6"
           tabIndex={-1}
         >
           {children}

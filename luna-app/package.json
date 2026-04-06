@@ -16,7 +16,10 @@
     "db:seed": "dotenv -e .env.local -- tsx prisma/seed.ts",
     "db:studio": "dotenv -e .env.local -- prisma studio",
     "import-periods": "tsx prisma/import-period-history.ts",
-    "db:import-sqlite": "dotenv -e .env.local -- tsx prisma/import-sqlite-to-postgres.ts"
+    "db:import-sqlite": "dotenv -e .env.local -- tsx prisma/import-sqlite-to-postgres.ts",
+    "cap:add:ios": "npx cap add ios",
+    "cap:sync": "npx cap sync",
+    "cap:open:ios": "npx cap open ios"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -24,6 +27,8 @@
   "dependencies": {
     "@auth/prisma-adapter": "^2.11.1",
     "@base-ui/react": "^1.3.0",
+    "@capacitor/core": "^8.3.0",
+    "@capacitor/ios": "^8.3.0",
     "@hookform/resolvers": "^5.2.2",
     "@prisma/client": "^6.19.3",
     "@tanstack/react-query": "^5.96.2",
@@ -54,6 +59,7 @@
     "zustand": "^5.0.12"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.3.0",
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^2.4.6",
     "@types/better-sqlite3": "^7.6.13",

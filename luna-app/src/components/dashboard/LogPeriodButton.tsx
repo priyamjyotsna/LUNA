@@ -12,7 +12,10 @@ export function LogPeriodFab() {
     <Button
       type="button"
       size="icon"
-      className="fixed bottom-20 right-4 z-40 size-14 rounded-full shadow-lg md:hidden"
+      className="fixed right-4 z-40 size-14 rounded-full shadow-lg md:hidden"
+      style={{
+        bottom: "calc(5rem + env(safe-area-inset-bottom, 0px) + 0.25rem)",
+      }}
       onClick={open}
       aria-label="Log period"
     >

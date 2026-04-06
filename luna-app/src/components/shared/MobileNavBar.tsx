@@ -18,7 +18,7 @@ export function MobileNavBar() {
 
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 z-50 flex border-t border-border bg-card/95 px-1 py-2 backdrop-blur-md md:hidden"
+      className="fixed bottom-0 left-0 right-0 z-50 flex border-t border-border bg-card/95 px-1 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] pt-2 backdrop-blur-md md:hidden"
       aria-label="Mobile navigation"
     >
       {nav.map(({ href, label, icon: Icon }) => {
