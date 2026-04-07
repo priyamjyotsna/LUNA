@@ -26,6 +26,8 @@ Then open [http://localhost:3000](http://localhost:3000).
 
 ## Mobile web (Option A) & iOS shell
 
+**Full step-by-step (Bundle ID, Apple Developer, Xcode, TestFlight, App Store):** see **[IOS_LAUNCH.md](./IOS_LAUNCH.md)**.
+
 **Mobile web / PWA** — Safari on iPhone: open your production URL, then **Share → Add to Home Screen**. The app uses `viewport-fit=cover`, safe-area padding for the bottom tab bar + FAB, and a web app manifest.
 
 **Capacitor + Xcode (TestFlight / App Store)** — The native project loads your **deployed** Luna site in a WebView (same UX as the browser; no duplicate API).
