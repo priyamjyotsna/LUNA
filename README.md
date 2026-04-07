@@ -7,7 +7,8 @@ Luna is an open-source menstrual cycle web app: period logging, phase-aware pred
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma&logoColor=white)](https://www.prisma.io/)
 
-**Repository:** [github.com/priyamjyotsna/LUNA](https://github.com/priyamjyotsna/LUNA)
+**Repository:** [github.com/priyamjyotsna/LUNA](https://github.com/priyamjyotsna/LUNA)  
+**Live demo:** [luna-lake-seven.vercel.app](https://luna-lake-seven.vercel.app/)
 
 ---
 

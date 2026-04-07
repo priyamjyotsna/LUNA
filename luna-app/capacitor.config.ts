@@ -4,7 +4,7 @@ import type { CapacitorConfig } from "@capacitor/cli";
  * iOS shell loads your deployed Next.js app (same as Option A, plus App Store / TestFlight).
  *
  * Set CAPACITOR_SERVER_URL to your production origin (no trailing slash), e.g.
- *   https://luna.vercel.app
+ *   https://luna-lake-seven.vercel.app
  *
  * Locally: add to `.env.local` (not committed). On CI for TestFlight builds, set in Xcode scheme or
  * export before `npx cap sync`.

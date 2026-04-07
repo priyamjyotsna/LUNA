@@ -33,7 +33,7 @@ Then open [http://localhost:3000](http://localhost:3000).
 1. Put your production origin in `.env.local` (not committed):
 
    ```bash
-   CAPACITOR_SERVER_URL=https://your-app.vercel.app
+   CAPACITOR_SERVER_URL=https://luna-lake-seven.vercel.app
    ```
 
    (No trailing slash. Must be `https`.)
