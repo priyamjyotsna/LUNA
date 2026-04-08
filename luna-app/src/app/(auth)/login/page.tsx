@@ -35,6 +35,15 @@ export default async function LoginPage({
         </Link>
       </p>
       <MedicalDisclaimer className="mt-6 text-center text-xs text-muted-foreground" />
+      <p className="mt-4 text-center text-xs text-muted-foreground">
+        <Link href="/privacy" className="underline-offset-4 hover:underline">
+          Privacy
+        </Link>
+        {" · "}
+        <Link href="/support" className="underline-offset-4 hover:underline">
+          Support
+        </Link>
+      </p>
     </div>
   );
 }

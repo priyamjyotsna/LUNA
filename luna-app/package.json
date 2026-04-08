@@ -19,6 +19,7 @@
     "db:import-sqlite": "dotenv -e .env.local -- tsx prisma/import-sqlite-to-postgres.ts",
     "cap:add:ios": "npx cap add ios",
     "cap:sync": "npx cap sync",
+    "cap:sync:ios": "dotenv -e .env.local -- npx cap sync ios",
     "cap:open:ios": "npx cap open ios"
   },
   "prisma": {

@@ -1,0 +1,148 @@
+================================================================================
+LUNA — APP STORE CONNECT SUBMISSION REFERENCE (PLAIN TEXT)
+================================================================================
+Fill in anything marked [YOUR ...] before submit. Production URL for the app:
+https://luna-lake-seven.vercel.app
+
+--------------------------------------------------------------------------------
+URLS (DEPLOY FIRST — THEN PASTE INTO APP STORE CONNECT)
+--------------------------------------------------------------------------------
+Privacy Policy URL     https://luna-lake-seven.vercel.app/privacy
+Support URL            https://luna-lake-seven.vercel.app/support
+                       (page shows support email: priyam.jyotsna@gmail.com)
+Marketing URL (opt.)   https://luna-lake-seven.vercel.app
+
+--------------------------------------------------------------------------------
+APP INFORMATION
+--------------------------------------------------------------------------------
+Name                   Luna
+Subtitle (short)       Your cycle, understood
+Bundle ID              com.priyamjyotsna.luna
+SKU                    [WHATEVER YOU SET IN APP STORE CONNECT, e.g. luna-ios-1]
+Primary language       English (U.S.) [or your choice]
+Primary category       Health & Fitness
+Secondary category     Lifestyle
+
+--------------------------------------------------------------------------------
+VERSION INFO (e.g. 1.0)
+--------------------------------------------------------------------------------
+Version number         [Match Xcode Marketing Version, e.g. 1.0.0 or 1.0]
+What's New             Initial release. Track periods, see cycle phases and
+                       predictions, log symptoms, and view insights. Sign in to
+                       sync your data with your Luna account.
+
+Promotional text (optional)
+Privacy-minded cycle tracking: period history, calendar, phase view, symptom
+logging, and insights. Wellness tool—not a medical device.
+
+--------------------------------------------------------------------------------
+DESCRIPTION (long — paste into App Store; under 4000 characters)
+--------------------------------------------------------------------------------
+Luna is a cycle tracker that helps you log period starts, see your cycle at a
+glance, and build useful insights from your own history—not generic averages.
+
+WHAT YOU CAN DO
+• Log period start dates and build a clear history
+• See cycle phases (menstrual, follicular, ovulatory, luteal) on your dashboard
+• View a calendar and day-by-day context for your cycle
+• Get range-based predictions from your logged cycles when you have enough data
+• Track symptoms and related notes over time
+• Explore insights and trends (charts and summaries)
+• Adjust settings and export options to match how you use the app
+
+HOW LUNA THINKS ABOUT PREDICTIONS
+Forecasts use your personal history first. Broader defaults only help when you
+don't yet have enough cycles logged.
+
+IMPORTANT
+Luna is a wellness and self-tracking tool. It is not a medical device and is
+not a substitute for professional medical advice, diagnosis, or treatment.
+Always talk to a qualified health professional for medical decisions.
+
+ACCOUNT & SYNC
+Create an account to use Luna. Your data is tied to your account so you can
+access Luna consistently across devices when you use the same credentials.
+
+Questions or feedback? Use the support link on this App Store page.
+
+--------------------------------------------------------------------------------
+KEYWORDS (about 100 characters total, comma-separated)
+--------------------------------------------------------------------------------
+period,cycle,calendar,menstrual,tracker,symptoms,fertility,ovulation,health,women,wellness
+[Edit to fit character limit; remove words if needed]
+
+--------------------------------------------------------------------------------
+COPYRIGHT
+--------------------------------------------------------------------------------
+2026 [YOUR LEGAL NAME OR COMPANY NAME]
+
+--------------------------------------------------------------------------------
+AGE RATING
+--------------------------------------------------------------------------------
+Complete Apple's questionnaire honestly. Typical wellness / cycle apps often
+land around 12+ depending on answers; your selections determine the band.
+No public social feed = usually no user-generated "social" content concern
+unless you add features later.
+
+--------------------------------------------------------------------------------
+APP PRIVACY (SUMMARY — MUST MATCH REAL BEHAVIOR)
+--------------------------------------------------------------------------------
+Disclose only what you actually collect. For Luna-style apps you will often
+include:
+
+- Contact info (e.g. email for account): collected, linked to user, for app
+  functionality; third-party sharing only if you truly use such services.
+- Health & fitness (cycle dates, symptoms, wellness logs): collected, linked to
+  user, for app functionality; usually not sold for advertising.
+- User content (notes): if stored, same as above.
+- Identifiers (account/session): for app functionality.
+
+If you use Google sign-in, disclose authentication / identity per Apple's
+categories. If you use analytics (Sentry, Vercel Analytics, etc.), disclose
+usage/diagnostics if they receive data linked to users.
+
+Tracking: If you do not use cross-app tracking for ads, answer accordingly on
+the Tracking questions.
+
+--------------------------------------------------------------------------------
+REVIEW INFORMATION (NOTES FOR REVIEWER)
+--------------------------------------------------------------------------------
+Luna is a native shell (WKWebView) that loads our production web app at:
+https://luna-lake-seven.vercel.app
+
+Test account (create a dedicated account for Apple only):
+Email:    [reviewer-test@yourdomain.com]
+Password: [SECURE PASSWORD]
+
+After sign-in, reviewers can access the main dashboard, calendar, symptoms,
+insights, and settings. Push notifications may require permission but are
+optional for review.
+
+Luna is a wellness / self-tracking tool, not a medical device or diagnostic
+tool.
+
+Contact phone [YOUR NUMBER IF CONNECT ASKS]
+
+--------------------------------------------------------------------------------
+ENCRYPTION / EXPORT (UPLOAD FLOW)
+--------------------------------------------------------------------------------
+Read Apple's exact wording when uploading. Many apps use only standard HTTPS
+and select the appropriate mass-market / standard encryption declaration.
+If unsure, use the conservative option Connect suggests or get legal advice.
+
+--------------------------------------------------------------------------------
+SUBMIT CHECKLIST
+--------------------------------------------------------------------------------
+[ ] Privacy Policy URL live and accurate
+[ ] Support URL live (https)
+[ ] Screenshots for all required device sizes
+[ ] App icon 1024x1024 in Xcode Assets.xcassets
+[ ] Build attached to this version in App Store Connect
+[ ] App Privacy questionnaire completed accurately
+[ ] Demo credentials in Review Notes
+[ ] Pricing set (free or paid)
+[ ] Agreements, tax, and banking complete in App Store Connect (if needed)
+
+================================================================================
+END
+================================================================================

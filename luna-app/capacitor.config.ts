@@ -1,18 +1,20 @@
 import type { CapacitorConfig } from "@capacitor/cli";
 
 /**
- * iOS shell loads your deployed Next.js app (same as Option A, plus App Store / TestFlight).
+ * iOS/Android shells load your deployed Next.js app in the WebView.
  *
- * Set CAPACITOR_SERVER_URL to your production origin (no trailing slash), e.g.
- *   https://luna-lake-seven.vercel.app
+ * **Vercel env vars do not apply here.** `cap sync` runs on your Mac (or CI) and evaluates this file;
+ * it writes `server.url` into `ios/.../capacitor.config.json`. Only those variables are visible
+ * during `cap sync` (e.g. `dotenv -e .env.local` or CI secrets)—not variables you set in Vercel.
  *
- * Locally: add to `.env.local` (not committed). On CI for TestFlight builds, set in Xcode scheme or
- * export before `npx cap sync`.
+ * Override with `CAPACITOR_SERVER_URL` or `NEXT_PUBLIC_APP_URL` (no trailing slash), e.g. staging.
  */
+const PRODUCTION_APP_ORIGIN = "https://luna-lake-seven.vercel.app";
+
 const serverUrl = (
   process.env.CAPACITOR_SERVER_URL ??
   process.env.NEXT_PUBLIC_APP_URL ??
-  ""
+  PRODUCTION_APP_ORIGIN
 ).replace(/\/$/, "");
 
 const config: CapacitorConfig = {
@@ -22,14 +24,10 @@ const config: CapacitorConfig = {
   ios: {
     contentInset: "automatic",
   },
-  ...(serverUrl
-    ? {
-        server: {
-          url: serverUrl,
-          cleartext: false,
-        },
-      }
-    : {}),
+  server: {
+    url: serverUrl,
+    cleartext: false,
+  },
 };
 
 export default config;
