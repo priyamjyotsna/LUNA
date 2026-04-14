@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { useTheme } from "next-themes";
 import { useQueryClient } from "@tanstack/react-query";
+import { signOut } from "next-auth/react";
 import { MedicalDisclaimer } from "@/components/shared/MedicalDisclaimer";
 import {
   AlertDialog,
@@ -56,6 +57,10 @@ export function SettingsPageClient() {
   const [themePref, setThemePref] = useState<"light" | "dark" | "system">("light");
   const [deleteConfirm, setDeleteConfirm] = useState("");
   const [bulkDeleteOpen, setBulkDeleteOpen] = useState(false);
+  const [accountDeleteOpen, setAccountDeleteOpen] = useState(false);
+  const [accountDeletePhrase, setAccountDeletePhrase] = useState("");
+  const [accountDeletePassword, setAccountDeletePassword] = useState("");
+  const [isDeletingAccount, setIsDeletingAccount] = useState(false);
   const bulkDeleteTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const bulkDeleteToastRef = useRef<string | number | undefined>(undefined);
 
@@ -197,6 +202,37 @@ export function SettingsPageClient() {
 
   const u = data.user;
   const vapidConfigured = Boolean(process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY?.trim());
+
+  async function deleteAccount() {
+    if (u.hasPassword && !accountDeletePassword.trim()) {
+      toast.error("Enter your password to delete your account.");
+      return;
+    }
+    setIsDeletingAccount(true);
+    try {
+      const res = await fetch("/api/user/delete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          confirm: "DELETE_MY_ACCOUNT",
+          ...(u.hasPassword ? { password: accountDeletePassword } : {}),
+        }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error((body as { error?: string }).error ?? "Could not delete account");
+      }
+      toast.success("Your account has been deleted.");
+      setAccountDeleteOpen(false);
+      setAccountDeletePhrase("");
+      setAccountDeletePassword("");
+      await signOut({ redirectTo: "/login" });
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Could not delete account");
+    } finally {
+      setIsDeletingAccount(false);
+    }
+  }
 
   return (
     <div className="mx-auto max-w-xl space-y-8">
@@ -445,6 +481,86 @@ export function SettingsPageClient() {
                   }}
                 >
                   Delete logs
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </CardContent>
+      </Card>
+
+      <Card className="border-destructive/40">
+        <CardHeader>
+          <CardTitle className="text-destructive">Delete account</CardTitle>
+          <CardDescription>
+            Permanently delete your Luna account, login, and all stored data. This cannot be undone.
+            Required by Apple for apps that support account creation.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <AlertDialog
+            open={accountDeleteOpen}
+            onOpenChange={(open) => {
+              setAccountDeleteOpen(open);
+              if (!open) {
+                setAccountDeletePhrase("");
+                setAccountDeletePassword("");
+              }
+            }}
+          >
+            <AlertDialogTrigger
+              render={<Button variant="destructive">Delete account…</Button>}
+            />
+            <AlertDialogContent className="max-w-md">
+              <AlertDialogHeader>
+                <AlertDialogTitle>Delete your account permanently?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Your profile, period logs, symptom logs, and settings will be removed from our
+                  servers. Type{" "}
+                  <span className="font-mono text-foreground">DELETE_MY_ACCOUNT</span> to confirm.
+                  {u.hasPassword ? (
+                    <>
+                      {" "}
+                      You must also enter your account password below.
+                    </>
+                  ) : null}
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <div className="space-y-3">
+                <Input
+                  value={accountDeletePhrase}
+                  onChange={(e) => setAccountDeletePhrase(e.target.value)}
+                  placeholder="DELETE_MY_ACCOUNT"
+                  autoComplete="off"
+                  aria-label="Type DELETE_MY_ACCOUNT to confirm"
+                />
+                {u.hasPassword ? (
+                  <div className="space-y-2">
+                    <Label htmlFor="delete-account-password">Password</Label>
+                    <Input
+                      id="delete-account-password"
+                      type="password"
+                      value={accountDeletePassword}
+                      onChange={(e) => setAccountDeletePassword(e.target.value)}
+                      autoComplete="current-password"
+                    />
+                  </div>
+                ) : null}
+              </div>
+              <AlertDialogFooter>
+                <AlertDialogCancel disabled={isDeletingAccount}>Cancel</AlertDialogCancel>
+                <AlertDialogAction
+                  className="bg-destructive hover:bg-destructive/90"
+                  disabled={
+                    isDeletingAccount ||
+                    accountDeletePhrase !== "DELETE_MY_ACCOUNT" ||
+                    (u.hasPassword && !accountDeletePassword.trim())
+                  }
+                  onClick={(e) => {
+                    e.preventDefault();
+                    void deleteAccount();
+                  }}
+                >
+                  {isDeletingAccount ? "Deleting…" : "Delete account"}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>

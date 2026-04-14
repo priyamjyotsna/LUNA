@@ -35,3 +35,11 @@ export type PushSubscriptionInput = z.infer<typeof pushSubscriptionSchema>;
 export const deleteDataConfirmSchema = z.object({
   confirm: z.literal("DELETE_MY_DATA"),
 });
+
+/** In-app account deletion (Apple 5.1.1(v)). */
+export const deleteAccountSchema = z
+  .object({
+    confirm: z.literal("DELETE_MY_ACCOUNT"),
+    password: z.string().optional(),
+  })
+  .strict();

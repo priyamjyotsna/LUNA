@@ -78,8 +78,11 @@ export default function PrivacyPage() {
           <h2 className="font-display text-xl font-semibold">Retention and your choices</h2>
           <p className="text-muted-foreground">
             We keep your information while your account is active and as needed to provide the
-            service or comply with law. You may request access, correction, or deletion of your
-            account and associated data by contacting us—see{" "}
+            service or comply with law. You can permanently delete your account and associated data
+            at any time in the app: go to{" "}
+            <strong className="text-foreground">Settings → Delete account</strong> (you will confirm
+            with a phrase and, if you use email/password sign-in, your password). Deletion removes
+            your account from our systems. You can also reach us via{" "}
             <Link href="/support" className="font-medium text-primary underline-offset-4 hover:underline">
               Support
             </Link>

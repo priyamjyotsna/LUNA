@@ -118,6 +118,13 @@ After sign-in, reviewers can access the main dashboard, calendar, symptoms,
 insights, and settings. Push notifications may require permission but are
 optional for review.
 
+ACCOUNT DELETION (Guideline 5.1.1(v)): Users can delete their account in-app at
+Settings (scroll to "Delete account"). They must type DELETE_MY_ACCOUNT and, if
+they use email/password sign-in, enter their password. The account is removed
+from our database; the user is signed out. Include a screen recording on a
+physical device showing sign-in, navigating to Settings → Delete account, and
+completing the flow (attach in App Review Information → Notes for next submit).
+
 Luna is a wellness / self-tracking tool, not a medical device or diagnostic
 tool.
 

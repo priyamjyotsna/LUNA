@@ -8,6 +8,8 @@ export type UserProfile = {
   id: string;
   name: string | null;
   email: string | null;
+  /** True if the user can sign in with email + password (re-verify before account deletion). */
+  hasPassword: boolean;
   averageCycleLen: number;
   lutealPhaseLen: number;
   periodDuration: number;

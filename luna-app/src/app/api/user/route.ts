@@ -41,6 +41,7 @@ export async function GET() {
       id: true,
       name: true,
       email: true,
+      password: true,
       averageCycleLen: true,
       lutealPhaseLen: true,
       periodDuration: true,
@@ -55,7 +56,10 @@ export async function GET() {
     return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
-  return NextResponse.json({ user: userPublic(user) });
+  const { password, ...rest } = user;
+  return NextResponse.json({
+    user: { ...userPublic(rest), hasPassword: Boolean(password) },
+  });
 }
 
 export async function PATCH(req: Request) {
